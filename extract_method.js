@@ -39,6 +39,19 @@ function currentlyInNewYork(user) {
 }
 
 
+function determineRecyclingDeposit(user) {
+  if (currentlyInState('NY', user)) {
+    return 5;
+  }
+  else if (currentlyInNewYork('AL', user)) {
+    return 0;
+  }
+  else if (currentlyInNewYork('HI', user)) {
+    return 10;
+  }
+  //... so on
+}
+
 // So we can even make the function nicer...
 function determineRecyclingDeposit(user) {
   const depositMaps = {
@@ -54,6 +67,7 @@ function determineRecyclingDeposit(user) {
     }
   });
 }
+
 // And now we are looking at the problem differently:
 //   ...should we really looping through all the states each time?
 //   ...can't we somehow just get the user's state and look it up?
