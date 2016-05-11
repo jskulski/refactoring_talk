@@ -1,8 +1,11 @@
 /**
+ *
  * REFACTORING
  *
- * @jonskulski
- * jskulski@gmail.com
+ *
+ *
+ * twitter: @jonskulski
+ * github: github.com/jskulski
  */
 
 
@@ -33,18 +36,27 @@
  *   working.
  *
  *   The general idea:
- *    "restructuring code confidently to make it easier to do what
- *    you want to do"
+ *
+ *   "restructuring code confidently to make it easier to do what
+ *   you want to do"
  */
 
 /**
  *
  * NOT EXPECTED:
  *
- *   1. To understand fully or recite any of this.
- *   2. Change anything about the way you are working+learning
+ *   1. Change anything about the way you are working+learning
+ *
+ *   2. To understand fully or recite any of this.
  *
  */
+
+
+
+
+
+
+
 
 
 /***
@@ -53,9 +65,27 @@
  *  - Probably #1 most important discipline I've learned.
  *  - Gave me great confidence in tackling the worst of code bases.
  *
+ *
  *  Any developer can work with good code.
  *  Any good developer can work with `bad` code.
- *  Great developers make bad code into good code.
+ *  Great developers make bad code into good code, then work with it.
+ *
+ */
+
+
+
+
+/**
+ *
+ * WARNING
+ *
+ * The word `Refactoring` is used a lot. Often incorrectly.
+ *
+ * - must ensure no external behavior changes.
+ * - if you can't deploy a refactor, it's not a refactor.
+ * - not a synonym for Rewrite!
+ *
+ * - "Refactoring without test is just changing [stuff]"
  *
  */
 
@@ -65,17 +95,16 @@
 
 
 
-
 /**
- * PROLOGUE: TALE
+ * PROLOGUE
  */
 
 /**
  * You wake up to a new task at work. You have a register system
- * that sends you integers.
+ * that sends you integers that correspond with keys pressed.
  *
- * You need to generate a string to send to the
- * kitchen to prepare.
+ * Your system generates strings to send to the kitchen to
+ * prepare.
  */
 function takeOrder(drink, temperature) {
   //...
@@ -178,23 +207,25 @@ function takeOrder(drink, temperature) {
  *
  * (And think of the next developer who has to add another drink type!)
  */
-function takeOrder(drink, temperature, options) {
-  if (drink == 0 && tempature == 0 && addition == 0) {
+function takeOrder(drink, temperature, addition) {
+  var order;
+
+  if (drink == 0 && temperature == 0 && addition == 0) {
     order = 'CUSTOMER WANTS A HOT COFFEE'
   }
-  else if (drink == 0 && tempature == 0 && addition == 1) {
+  else if (drink == 0 && temperature == 0 && addition == 1) {
     order = 'CUSTOMER WANTS CREAM AND A HOT COFFEE'
   }
-  if (drink == 0 && tempature == 0 && addition == 2) {
+  if (drink == 0 && temperature == 0 && addition == 2) {
     order = 'CUSTOMER WANTS SUGAR AND A HOT COFFEE'
   }
-  else if (drink == 0 && tempature == 1 && addition == 0) {
+  else if (drink == 0 && temperature == 1 && addition == 0) {
     order = 'CUSTOMER WANTS A ICED COFFEE'
   }
-  else if (drink == 0 && tempature == 1 && addition == 1) {
+  else if (drink == 0 && temperature == 1 && addition == 1) {
     order = 'CUSTOMER WANTS CREAM AND A ICED COFFEE'
   }
-  else if (drink == 1 && tempature == 1 && addition == 2) {
+  else if (drink == 1 && temperature == 1 && addition == 2) {
     order = 'CUSTOMER WANTS SUGAR AND A ICED COFFEE'
   }
   //... and on for ever
@@ -222,9 +253,9 @@ function takeOrder(drink, temperature, options) {
  * We know form MATH:
  *
  *   y = (x - 1)^2
- *   y = (x - 1)(x - 1)
- *   y = x^2 + (x - x) + 1
- *   y = x^2 + 1
+ *     = (x - 1)(x - 1)
+ *     = x^2 + (x - x) + 1
+ *     = x^2 + 1
  *
  */
 function f1(x) { return Math.pow(x - 1, 2); }
@@ -286,6 +317,7 @@ assert(easyToWorkWith(x) == hardToWorkWith(x)); // For any x
  *  2. Guaranteeing no change in external behavior (through Tests)
  *  3. Changing code to be easy to work with and
  *     then doing what you need to do.
+ *
  */
 
 
@@ -487,7 +519,7 @@ function takeOrder(drink, temperature, options) {
   else if (drink == 1) {
     order += 'TEA';
   }
-  else if (drink == 1) {
+  else if (drink == 2) {
     order += 'MILK';
   }
   else {
@@ -496,6 +528,26 @@ function takeOrder(drink, temperature, options) {
 
   return order;
 }
+
+
+
+
+/**
+ * A COUPLE TECHNIQUES FOCUSING ON IMPROVING READABILITY
+ *
+ * - Use refactor tools
+ *
+ * - Renaming
+ * - Extracting variable
+ * - Extracting method
+ */
+
+
+
+
+
+
+
 
 
 
@@ -531,17 +583,6 @@ function takeOrder(drink, temperature, options) {
  *
  */
 
-
-
-/**
- * A COUPLE TECHNIQUES FOCUSING ON IMPROVING READABILITY
- *
- * - Use refactor tools
- *
- * - Renaming
- * - Extracting variable
- * - Extracting method
- */
 
 /**
  *
