@@ -5,13 +5,42 @@ if (user.currentAddress.state == 'NY' || (user.permanantAddress.state == 'NY' &&
 
 
 // Extracting that conditional logic into a method
-function currentlyInNewYork(user) { return (user.currentAddress.state == 'NY' || (user.permanantAddress.state == 'NY' && !user.notVacationing)) }
+function currentlyInNewYork(user) {
+  return (user.currentAddress.state == 'NY' || (user.permanantAddress.state == 'NY' && !user.notVacationing));
+}
+
+
+
+
+
+
+
+
+
+
+
 
 
 // ...improves readability and understanding
 if (currentlyInNewYork(user)) {
   deposit = 5;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 // ...and also structure, say it lived in here
 function determineRecyclingDeposit(user) {

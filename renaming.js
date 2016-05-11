@@ -28,7 +28,7 @@ console.log(age); // => ?????
 
 
 
-// With out look we probably think ageOf is like
+// With out looking we probably think ageOf is like:
 function ageOf(person) {
   return person.age;
 }
@@ -60,7 +60,7 @@ function ageOf(person) {
 
 
 
-// But it's all like
+// But it's all like:
 function ageOf(person) {
   return person.age + ' years old';
 }

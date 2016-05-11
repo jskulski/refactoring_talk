@@ -6,13 +6,35 @@
  */
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /**
  * WHAT TO EXPECT:
  *
- *   Planting a seed that REFACTORING is very a precise way of working.
+ *   Planting a seed that REFACTORING is very a precise way of
+ *   working.
  *
  *   The general idea:
- *    "restructuring code confidently to make it easier to do what you want to do"
+ *    "restructuring code confidently to make it easier to do what
+ *    you want to do"
  */
 
 /**
@@ -29,12 +51,12 @@
  * WHY:
  *
  *  - Probably #1 most important discipline I've learned.
- *
- *  - Any developer can work with good code.
- *  - Any good developer can work with bad code.
- *  - Great developers make bad code into good code.
- *
  *  - Gave me great confidence in tackling the worst of code bases.
+ *
+ *  Any developer can work with good code.
+ *  Any good developer can work with `bad` code.
+ *  Great developers make bad code into good code.
+ *
  */
 
 
@@ -49,10 +71,11 @@
  */
 
 /**
- * You wake up to a new task at work. You have a register system that sends
- * integers and you need to generate a string to send to the kitchen to prepare.
+ * You wake up to a new task at work. You have a register system
+ * that sends you integers.
  *
- *
+ * You need to generate a string to send to the
+ * kitchen to prepare.
  */
 function takeOrder(drink, temperature) {
   //...
@@ -111,6 +134,11 @@ assert(takeOrder(1, 1, 2) == 'CUSTOMER NEEDS SUGAR AND A COLD MILK');
 
 /**
  * You crack your knuckles and open up the code...
+ *
+ * It's not great. It's not terrible.
+ *
+ * But it's not going to be easy for you to get what you need
+ * to do, done.
  */
 function takeOrder(drink, temperature) {
   var order;
@@ -193,15 +221,11 @@ function takeOrder(drink, temperature, options) {
  *
  * We know form MATH:
  *
- *   y =  (x - 1)^2
- *   y =  (x - 1)(x - 1)
- *   y =  x^2 + (x - x) + 1
- *   y =  x^2 + 1
+ *   y = (x - 1)^2
+ *   y = (x - 1)(x - 1)
+ *   y = x^2 + (x - x) + 1
+ *   y = x^2 + 1
  *
- *  All with various qualities.
- *  f2 is more readable to me, f3 is the slowest, f1, f4 might be the fastest...
- *
- *  So there might be useful to be able to swap out implementations....
  */
 function f1(x) { return Math.pow(x - 1, 2); }
 function f2(x) { return (x - 1) * (x - 1); }
@@ -211,12 +235,18 @@ function f4(x) { return Math.pow(x, 2) + 1; }
 
 /**
  *
- * Meaning that for ANY value of x we are pretty much guaranteed:
+ *  All with various qualities:
+ *  f2 is more readable to me,
+ *  f3 is the slowest,
+ *  f1 or f4 might be the fastest depending on the chip...
+ *
+ * But since for ANY value of x we are pretty much guaranteed:
  *
  *   f1(x) == f2(x) == f3(x) == f4(x)
  *
- * So we could have a test suite that looked something like:
+ * We can swap out the implementation.
  *
+ * So we could have a test suite that looked something like:
  */
 function f() {
   // ANY OF THOSE IMPLEMENTATIONS
@@ -254,23 +284,28 @@ assert(easyToWorkWith(x) == hardToWorkWith(x)); // For any x
  *
  *  1. Identifying easier to work with structures
  *  2. Guaranteeing no change in external behavior (through Tests)
- *  3. Changing code to be easy to work with and then doing what you need to do.
+ *  3. Changing code to be easy to work with and
+ *     then doing what you need to do.
  */
 
 
 /**
  * DEFINITIONS:
  *
- * "Code refactoring is the process of restructuring existing computer code
- *  without changing its external behavior." - Wikipedia and Boring Books
+ * "Code refactoring is the process of restructuring existing
+ *  computer code without changing its external behavior."
+ *  - Wikipedia and Boring Books
  *
  *
  * "[Refactoring is] applying a series of small behavior-preserving
- *  transformations, each of which 'too small to be worth doing'"  - MARTIN FOWLER
+ *  transformations, each of which 'too small to be worth doing'"
+ *  - MARTIN FOWLER
  *
  * The main point:
  *    - change the internal
  *    - preserve the external
+ *
+ *    - do it for a purpose, to get something DONE.
  */
 
 
@@ -288,8 +323,8 @@ function takeOrder(drink, temperature, options) {
  * You go and take a walk around a lake and muse and think and when you come back
  * you're rested and you realize that there's some duplication in the string.
  *
- * The first thing you'll want to do is create a nice test suite so you can
- * guarentee there is no EXTERNAL CHANGES.
+ * The first thing you'll want to do is create a nice test suite so
+ * you can guarantee there are no EXTERNAL CHANGES.
  *
  * So you do the tedious work of cataloguing current behavior:
  */
@@ -310,12 +345,13 @@ assert(takeOrder(1, 1) == 'CUSTOMER WANTS A COLD ICED');
  * Let's extract it.
  *
  * Note that this is a very small thing, hardly worth doing.
- * But we're also pretty confident (even w/o tests) that we will still have a working system.
+ * But we're also pretty confident (even w/o tests) that we will
+ * still have a working system.
  *
  * THIS PART IS CRUX
  */
 function takeOrder(drink, temperature) {
-  var order = 'CUSTOMER NEEDS A'
+  var order = 'CUSTOMER NEEDS A';
 
   if (drink == 0 && temperature == 0) {
     order = 'HOT COFFEE';
@@ -499,6 +535,8 @@ function takeOrder(drink, temperature, options) {
 
 /**
  * A COUPLE TECHNIQUES FOCUSING ON IMPROVING READABILITY
+ *
+ * - Use refactor tools
  *
  * - Renaming
  * - Extracting variable
