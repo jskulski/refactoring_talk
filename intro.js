@@ -81,9 +81,9 @@ function takeOrder(drink, temperature) {
   //...
 }
 
-assert(takeOrder(0, 0) == 'CUSTOMER NEEDS A HOT COFFEE');
-assert(takeOrder(0, 1) == 'CUSTOMER NEEDS A COLD TEA');
-assert(takeOrder(1, 1) == 'CUSTOMER NEEDS A COLD MILK');
+// assert(takeOrder(0, 0) == 'CUSTOMER NEEDS A HOT COFFEE');
+// assert(takeOrder(1, 1) == 'CUSTOMER NEEDS A COLD TEA');
+// assert(takeOrder(2, 1) == 'CUSTOMER NEEDS A COLD MILK');
 // ... and many more!
 
 
@@ -113,9 +113,9 @@ function takeOrder(drink, temperature, options) {
 /**
  * And generating this:
  */
-assert(takeOrder(0, 0, 1) == 'CUSTOMER NEEDS CREAM AND A HOT COFFEE');
-assert(takeOrder(0, 1, 0) == 'CUSTOMER NEEDS A COLD TEA');
-assert(takeOrder(1, 1, 2) == 'CUSTOMER NEEDS SUGAR AND A COLD MILK');
+// assert(takeOrder(0, 0, 1) == 'CUSTOMER NEEDS CREAM AND A HOT COFFEE');
+// assert(takeOrder(1, 1, 0) == 'CUSTOMER NEEDS A COLD TEA');
+// assert(takeOrder(2, 1, 2) == 'CUSTOMER NEEDS SUGAR AND A COLD MILK');
 // ... and more!
 
 
@@ -140,7 +140,7 @@ assert(takeOrder(1, 1, 2) == 'CUSTOMER NEEDS SUGAR AND A COLD MILK');
  * But it's not going to be easy for you to get what you need
  * to do, done.
  */
-function takeOrder(drink, temperature) {
+var takeOrder = function(drink, temperature) {
   var order;
 
   if (drink == 0 && temperature == 0) {
@@ -155,10 +155,10 @@ function takeOrder(drink, temperature) {
   else if (drink == 1 && temperature == 1) {
     order = 'CUSTOMER NEEDS A COLD TEA';
   }
-  else if (drink == 1 && temperature == 0) {
+  else if (drink == 2 && temperature == 0) {
     order = 'CUSTOMER NEEDS A HOT MILK';
   }
-  else if (drink == 1 && temperature == 1) {
+  else if (drink == 2 && temperature == 1) {
     order = 'CUSTOMER NEEDS A COLD MILK';
   }
   else {
@@ -168,6 +168,9 @@ function takeOrder(drink, temperature) {
   return order;
 }
 
+assert(takeOrder(0, 0) == 'CUSTOMER NEEDS A HOT COFFEE');
+assert(takeOrder(1, 1) == 'CUSTOMER NEEDS A COLD TEA');
+assert(takeOrder(2, 1) == 'CUSTOMER NEEDS A COLD MILK');
 
 /**
  * You start to think.
@@ -178,27 +181,68 @@ function takeOrder(drink, temperature) {
  *
  * (And think of the next developer who has to add another drink type!)
  */
-function takeOrder(drink, temperature, options) {
-  if (drink == 0 && tempature == 0 && addition == 0) {
-    order = 'CUSTOMER WANTS A HOT COFFEE'
+var takeOrder = function(drink, temperature, options) {
+  if (drink == 0 && temperature == 0 && options == 0) {
+    order = 'CUSTOMER NEEDS A HOT COFFEE'
   }
-  else if (drink == 0 && tempature == 0 && addition == 1) {
-    order = 'CUSTOMER WANTS CREAM AND A HOT COFFEE'
+  else if (drink == 0 && temperature == 0 && options == 1) {
+    order = 'CUSTOMER NEEDS CREAM AND A HOT COFFEE'
   }
-  if (drink == 0 && tempature == 0 && addition == 2) {
-    order = 'CUSTOMER WANTS SUGAR AND A HOT COFFEE'
+  if (drink == 0 && temperature == 0 && options == 2) {
+    order = 'CUSTOMER NEEDS SUGAR AND A HOT COFFEE'
   }
-  else if (drink == 0 && tempature == 1 && addition == 0) {
-    order = 'CUSTOMER WANTS A ICED COFFEE'
+  else if (drink == 0 && temperature == 1 && options == 0) {
+    order = 'CUSTOMER NEEDS A COLD COFFEE'
   }
-  else if (drink == 0 && tempature == 1 && addition == 1) {
-    order = 'CUSTOMER WANTS CREAM AND A ICED COFFEE'
+  else if (drink == 0 && temperature == 1 && options == 1) {
+    order = 'CUSTOMER NEEDS CREAM AND A COLD COFFEE'
   }
-  else if (drink == 1 && tempature == 1 && addition == 2) {
-    order = 'CUSTOMER WANTS SUGAR AND A ICED COFFEE'
+  else if (drink == 0 && temperature == 1 && options == 2) {
+    order = 'CUSTOMER NEEDS SUGAR AND A COLD COFFEE'
   }
-  //... and on for ever
+  if (drink == 1 && temperature == 0 && options == 0) {
+    order = 'CUSTOMER NEEDS A HOT TEA'
+  }
+  else if (drink == 1 && temperature == 0 && options == 1) {
+    order = 'CUSTOMER NEEDS CREAM AND A HOT TEA'
+  }
+  if (drink == 1 && temperature == 0 && options == 2) {
+    order = 'CUSTOMER NEEDS SUGAR AND A HOT TEA'
+  }
+  else if (drink == 1 && temperature == 1 && options == 0) {
+    order = 'CUSTOMER NEEDS A COLD TEA'
+  }
+  else if (drink == 1 && temperature == 1 && options == 1) {
+    order = 'CUSTOMER NEEDS CREAM AND A COLD TEA'
+  }
+  else if (drink == 1 && temperature == 1 && options == 2) {
+    order = 'CUSTOMER NEEDS SUGAR AND A COLD TEA'
+  }
+  if (drink == 2 && temperature == 0 && options == 0) {
+    order = 'CUSTOMER NEEDS A HOT MILK'
+  }
+  else if (drink == 2 && temperature == 0 && options == 1) {
+    order = 'CUSTOMER NEEDS CREAM AND A HOT MILK'
+  }
+  if (drink == 2 && temperature == 0 && options == 2) {
+    order = 'CUSTOMER NEEDS SUGAR AND A HOT MILK'
+  }
+  else if (drink == 2 && temperature == 1 && options == 0) {
+    order = 'CUSTOMER NEEDS A COLD MILK'
+  }
+  else if (drink == 2 && temperature == 1 && options == 1) {
+    order = 'CUSTOMER NEEDS CREAM AND A COLD MILK'
+  }
+  else if (drink == 2 && temperature == 1 && options == 2) {
+    order = 'CUSTOMER NEEDS SUGAR AND A COLD MILK'
+  }
+  return order;
 }
+
+
+assert(takeOrder(0, 0, 1) == 'CUSTOMER NEEDS CREAM AND A HOT COFFEE');
+assert(takeOrder(1, 1, 0) == 'CUSTOMER NEEDS A COLD TEA');
+assert(takeOrder(2, 1, 2) == 'CUSTOMER NEEDS SUGAR AND A COLD MILK');
 
 /***
  *
@@ -219,18 +263,17 @@ function takeOrder(drink, temperature, options) {
 /**
  * MATH
  *
- * We know form MATH:
+ * We know from MATH:
  *
  *   y = (x - 1)^2
  *   y = (x - 1)(x - 1)
- *   y = x^2 + (x - x) + 1
- *   y = x^2 + 1
+ *   y = x^2 - 2x + 1
  *
  */
 function f1(x) { return Math.pow(x - 1, 2); }
 function f2(x) { return (x - 1) * (x - 1); }
-function f3(x) { return Math.pow(x, 2) + (x - x) + 1; }
-function f4(x) { return Math.pow(x, 2) + 1; }
+function f3(x) { return Math.pow(x, 2) -2*x + 1; }
+
 
 
 /**
@@ -238,23 +281,23 @@ function f4(x) { return Math.pow(x, 2) + 1; }
  *  All with various qualities:
  *  f2 is more readable to me,
  *  f3 is the slowest,
- *  f1 or f4 might be the fastest depending on the chip...
  *
  * But since for ANY value of x we are pretty much guaranteed:
  *
- *   f1(x) == f2(x) == f3(x) == f4(x)
+ *   f1(x) == f2(x) == f3(x) 
  *
  * We can swap out the implementation.
  *
  * So we could have a test suite that looked something like:
  */
-function f() {
+function f(x) {
   // ANY OF THOSE IMPLEMENTATIONS
+  return f1(x) === f2(x) && f2(x) === f3(x) ? f1(x) : false
 }
 
 assert(f(2) == 1);
 assert(f(-1) == 4);
-assert(f(0) == 0);
+assert(f(0) == 1);
 //... and so on.
 
 
@@ -275,7 +318,7 @@ function hardToWorkWith() {
   // ...
 }
 
-assert(easyToWorkWith(x) == hardToWorkWith(x)); // For any x
+// assert(easyToWorkWith(x) == hardToWorkWith(x)); // For any x
 
 
 /***
@@ -315,7 +358,7 @@ assert(easyToWorkWith(x) == hardToWorkWith(x)); // For any x
  *
  * You think there must be an easier way to implement your options.
  */
-function takeOrder(drink, temperature, options) {
+var takeOrder = function(drink, temperature, options) {
   //...
 }
 
@@ -328,10 +371,10 @@ function takeOrder(drink, temperature, options) {
  *
  * So you do the tedious work of cataloguing current behavior:
  */
-assert(takeOrder(0, 0) == 'CUSTOMER WANTS A HOT COFFEE');
-assert(takeOrder(0, 1) == 'CUSTOMER WANTS A COLD COFFEE');
-assert(takeOrder(1, 0) == 'CUSTOMER WANTS A HOT ICED');
-assert(takeOrder(1, 1) == 'CUSTOMER WANTS A COLD ICED');
+// assert(takeOrder(0, 0) == 'CUSTOMER NEEDS A HOT COFFEE');
+// assert(takeOrder(0, 1) == 'CUSTOMER NEEDS A COLD COFFEE');
+// assert(takeOrder(1, 0) == 'CUSTOMER NEEDS A HOT TEA');
+// assert(takeOrder(1, 1) == 'CUSTOMER NEEDS A COLD TEA');
 //... and so on for all combinations
 
 /**
@@ -350,26 +393,26 @@ assert(takeOrder(1, 1) == 'CUSTOMER WANTS A COLD ICED');
  *
  * THIS PART IS CRUX
  */
-function takeOrder(drink, temperature) {
-  var order = 'CUSTOMER NEEDS A';
+var takeOrder = function(drink, temperature) {
+  var order = 'CUSTOMER NEEDS A ';
 
   if (drink == 0 && temperature == 0) {
-    order = 'HOT COFFEE';
+    order += 'HOT COFFEE';
   }
   else if (drink == 0 && temperature == 1) {
-    order = 'COLD COFFEE';
+    order += 'COLD COFFEE';
   }
   else if (drink == 1 && temperature == 0) {
-    order = 'HOT TEA';
+    order += 'HOT TEA';
   }
   else if (drink == 1 && temperature == 1) {
-    order = 'COLD TEA';
+    order += 'COLD TEA';
   }
   else if (drink == 1 && temperature == 0) {
-    order = 'HOT MILK';
+    order += 'HOT MILK';
   }
   else if (drink == 1 && temperature == 1) {
-    order = 'COLD MILK';
+    order += 'COLD MILK';
   }
   else {
     throw "UNSUPPORTED ORDER"
@@ -378,6 +421,10 @@ function takeOrder(drink, temperature) {
   return order;
 }
 
+assert(takeOrder(0, 0) == 'CUSTOMER NEEDS A HOT COFFEE');
+assert(takeOrder(0, 1) == 'CUSTOMER NEEDS A COLD COFFEE');
+assert(takeOrder(1, 0) == 'CUSTOMER NEEDS A HOT TEA');
+assert(takeOrder(1, 1) == 'CUSTOMER NEEDS A COLD TEA');
 
 /**
  * Now that we did this, even more duplication is presented.
@@ -388,8 +435,8 @@ function takeOrder(drink, temperature) {
  * We can even keep the temperature checks in there to prove how 'not worth doing'
  * these steps can be.
  */
-function takeOrder(drink, temperature) {
-  var order = 'CUSTOMER NEEDS A';
+var takeOrder = function(drink, temperature) {
+  var order = 'CUSTOMER NEEDS A ';
 
   if (temperature == 0) {
     order += 'HOT ';
@@ -410,10 +457,10 @@ function takeOrder(drink, temperature) {
   else if (drink == 1 && temperature == 1) {
     order += 'TEA';
   }
-  else if (drink == 1 && temperature == 0) {
+  else if (drink == 2 && temperature == 0) {
     order += 'MILK';
   }
-  else if (drink == 1 && temperature == 1) {
+  else if (drink == 2 && temperature == 1) {
     order += 'MILK';
   }
   else {
@@ -423,13 +470,17 @@ function takeOrder(drink, temperature) {
   return order;
 }
 
+assert(takeOrder(0, 0) == 'CUSTOMER NEEDS A HOT COFFEE');
+assert(takeOrder(0, 1) == 'CUSTOMER NEEDS A COLD COFFEE');
+assert(takeOrder(1, 0) == 'CUSTOMER NEEDS A HOT TEA');
+assert(takeOrder(1, 1) == 'CUSTOMER NEEDS A COLD TEA');
 
 /**
  * Next, we can remove the next obvious duplication:
  *
  */
-function takeOrder(drink, temperature) {
-  var order = 'CUSTOMER NEEDS A';
+var takeOrder = function(drink, temperature) {
+  var order = 'CUSTOMER NEEDS A ';
 
   if (temperature == 0) {
     order += 'HOT ';
@@ -444,7 +495,7 @@ function takeOrder(drink, temperature) {
   else if (drink == 1) {
     order += 'TEA';
   }
-  else if (drink == 1) {
+  else if (drink == 2) {
     order += 'MILK';
   }
   else {
@@ -454,6 +505,10 @@ function takeOrder(drink, temperature) {
   return order;
 }
 
+assert(takeOrder(0, 0) == 'CUSTOMER NEEDS A HOT COFFEE');
+assert(takeOrder(0, 1) == 'CUSTOMER NEEDS A COLD COFFEE');
+assert(takeOrder(1, 0) == 'CUSTOMER NEEDS A HOT TEA');
+assert(takeOrder(1, 1) == 'CUSTOMER NEEDS A COLD TEA');
 
 /**
  * NOW WE CAN IMPLEMENT OUR CHANGE!!!!!
@@ -461,24 +516,24 @@ function takeOrder(drink, temperature) {
  * We can ship it with a lot of confidence.
  * If needed we can even continue improving.
  */
-function takeOrder(drink, temperature, options) {
-  var order = 'CUSTOMER NEEDS A ';
+var takeOrder = function(drink, temperature, options) {
+  var order = 'CUSTOMER NEEDS ';
 
   if (options == 0) {
     // No option
   }
   else if (options == 1) {
-    order += 'CREAM AND A ';
+    order += 'CREAM AND ';
   }
   else if (options == 2) {
-    order += 'SUGAR AND A';
+    order += 'SUGAR AND ';
   }
 
   if (temperature == 0) {
-    order += 'HOT';
+    order += 'A HOT ';
   }
   else {
-    order += 'COLD';
+    order += 'A COLD ';
   }
 
   if (drink == 0) {
@@ -487,7 +542,7 @@ function takeOrder(drink, temperature, options) {
   else if (drink == 1) {
     order += 'TEA';
   }
-  else if (drink == 1) {
+  else if (drink == 2) {
     order += 'MILK';
   }
   else {
@@ -497,6 +552,9 @@ function takeOrder(drink, temperature, options) {
   return order;
 }
 
+assert(takeOrder(0, 0, 1) == 'CUSTOMER NEEDS CREAM AND A HOT COFFEE');
+assert(takeOrder(1, 1, 0) == 'CUSTOMER NEEDS A COLD TEA');
+assert(takeOrder(2, 1, 2) == 'CUSTOMER NEEDS SUGAR AND A COLD MILK');
 
 
 /**
@@ -579,5 +637,7 @@ function takeOrder(drink, temperature, options) {
 function assert(condition) {
   if (!condition) {
     throw "ASSERTION FAILED";
+  } else {
+    console.log('success');
   }
 }
